@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="static/home.css">
+
+</head>
+<body>
+
+
+  <header>Jasper's homepage</header>
+<div class="wrap">
+  <div class="mainBox"></div>
+  <div class="rightBox">
+  <div class="loginBox">
+  <form>
+  <div class="inputDiv">
+    <h2>Login</h2>
+    <div> email : <input type="email" id="signInEmail" placeholder="Email" required/></div>
+    <div> password : <input type="password" id="signInPassword" placeholder="Password" required/></div>
+    <button type="submit" id="signInButton" >Login</button>
+  </div>
+  </form>
+  <form action="http://127.0.0.1:5000/register">
+  <div class="registerBox">
+    <span>Didn't register yet?</span>
+    <button id="registerButton">Go to register</button>
+  </div>
+  </form></div>
+  <div class="subBox">
+    <div class="maxCode"><span>{{codeMax}}</span></div> 
+    <div class="extractedInfo"><a href="{{link_code_needToPrint}}">{{link_code_needToPrint}}</a><h1></h1><span>{{info_extracted}}</span><h1></h1></div>
+  </div>
+</div>
+</div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+        import { getDatabase, ref, set } from "firebase/database";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyAMXUlfzQUNzIKHFHDQdT8VLyJoIBfyZBI",
+          authDomain: "pusher-d134f.firebaseapp.com",
+          projectId: "pusher-d134f",
+          storageBucket: "pusher-d134f.appspot.com",
+          messagingSenderId: "708144789790",
+          appId: "1:708144789790:web:66afc5997333cc7dd5310f",
+          measurementId: "G-5TL2LN3GNZ",
+          databaseURL: "https://pusher-d134f-default-rtdb.firebaseio.com/"
+        };
+        
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const database = getDatabase(app);
+
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        const auth = getAuth();
+        
+        function login() {
+          var isSuccess = true;
+      }
+        // function saveCode(codeMax) {
+        //   const db = getDatabase();
+        //   set(ref(db, codeMax), {
+        //     Thecode : codeMax
+        //   });
+        // }
+
+        document.getElementById('signInButton').addEventListener('click', (event) => {
+          event.preventDefault()
+          const signInEmail = document.getElementById('signInEmail').value
+          const signInPassword = document.getElementById('signInPassword').value
+          signInWithEmailAndPassword(auth, signInEmail, signInPassword)
+            .then((userCredential) => {
+              // Signed in 
+              const user = userCredential.user;
+              window.location.href = "http://127.0.0.1:5000/code";
+            })
+            .catch((error) => {
+              alert("login error")
+              const errorCode = error.code;
+              const errorMessage = error.message;
+            });
+          })
+    </script>
+      
+</body>
+</html>
