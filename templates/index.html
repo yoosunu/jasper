@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <!-- <link rel="stylesheet" href="static/home.css"> -->
+    <script type="module" src="{{ url_for('static', filename='js/firebase-messaging-sw.js') }}"></script>
+</head>
+<body>
+
+  <header>Jasper's homepage</header>
+<div class="wrap">
+  <div class="mainBox"></div>
+  <div class="rightBox">
+  <div class="loginBox">
+  <form>
+  <div class="inputDiv">
+    <h2>Login</h2>
+    <div> email : <input type="email" id="signInEmail" placeholder="Email" required/></div>
+    <div> password : <input type="password" id="signInPassword" placeholder="Password" required/></div>
+    <button type="submit" id="signInButton" >Login</button>
+  </div>
+  </form>
+  <form action="http://127.0.0.1:5000/register">
+  <div class="registerBox">
+    <span>Didn't register yet?</span>
+    <button id="registerButton">Go to register</button>
+  </div>
+  </form></div>
+  <div class="subBox">
+    <div class="maxCode"><span id="codemax">{{codeMax}}</span></div> 
+    <div class="extractedInfo">
+      <div class="codeBox">
+      {% for info in info_extracted %}
+      <a href="https://www.jbnu.ac.kr/kor/?menuID=139&mode=view&no={{info}}">{{info}}</a>
+      {% endfor %}
+      </div>
+      <div class="textBox">
+      {% for text in texts %}
+      <span><h1></h1>{{text}}</span>
+      {% endfor %}
+      </div>
+  </div>
+</div>
+</div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+        // import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyAMXUlfzQUNzIKHFHDQdT8VLyJoIBfyZBI",
+          authDomain: "pusher-d134f.firebaseapp.com",
+          projectId: "pusher-d134f",
+          storageBucket: "pusher-d134f.appspot.com",
+          messagingSenderId: "708144789790",
+          appId: "1:708144789790:web:66afc5997333cc7dd5310f",
+          measurementId: "G-5TL2LN3GNZ",
+          databaseURL: "https://pusher-d134f-default-rtdb.firebaseio.com/"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+      // auth logic
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        const auth = getAuth(app);
+
+        document.getElementById('signInButton').addEventListener('click', (event) => {
+          event.preventDefault()
+          const signInEmail = document.getElementById('signInEmail').value
+          const signInPassword = document.getElementById('signInPassword').value
+          signInWithEmailAndPassword(auth, signInEmail, signInPassword)
+            .then((userCredential) => {
+              // Signed in 
+              const user = userCredential.user;
+              window.location.href = "http://127.0.0.1:5000/code";
+          
+            })
+            .catch((error) => {
+              alert("login error")
+              const errorCode = error.code;
+              const errorMessage = error.message;
+            });
+          })
+        // auth end
+
+    </script>
+      
+</body>
+</html>

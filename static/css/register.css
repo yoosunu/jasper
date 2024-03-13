@@ -1,0 +1,49 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.resisterBox {
+    height: 300px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: lightgray;
+    padding: 5px 0px 0px 0px;
+    margin-top: 150px;
+}
+
+.resisterBox h1 {
+    margin-bottom: 50px;
+}
+
+.resisterBox div {
+    font-size: 20px;
+}
+
+#signUpEmail {
+    margin-top: 50px;
+    margin: 0px 0px 10px 60px;
+    width: 250px;
+    height: 25px;
+}
+
+#signUpPassword {
+    margin: 0px 0px 20px 24px;
+    width: 250px;
+    height: 25px;
+}
+
+#signUpButton {
+    width: 380px;
+    height: 37px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    margin-top: 15px;
+}

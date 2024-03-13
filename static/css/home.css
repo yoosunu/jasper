@@ -1,0 +1,138 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: whitesmoke;
+}
+
+.wrap {
+    display: flex;
+}
+
+header {
+    font-size: 40px;
+    margin: 20px 0px 20px 0px;
+}
+
+.inputDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+#signInEmail {
+    margin: 0px 0px 10px 55px;
+    
+}
+
+#signInPassword {
+    margin: 0px 0px 20px 28px;
+    
+}
+
+.loginBox {
+    height: 210px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: lightgray;
+    padding: 5px 0px 0px 0px;
+    
+}
+
+#signInButton {
+    width: 255px;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+#registerButton {
+    margin: 0px 0px 30px 20px;
+
+}
+
+.mainBox {
+    width: 500px;
+    height: 650px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.subBox {
+    border: 2px solid black;
+    height: 425px;
+    width: 300px;
+    margin-top: 5px;
+    border-radius: 10px;
+    background-color: lavender;
+}
+
+.maxCode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 50px;
+    border-bottom: 2px solid black;
+    border-radius: 10px;
+}
+
+.maxCode span {
+    padding-top: 5px;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.extractedInfo {
+    box-sizing: border-box;
+    width: 300px;
+    height: 370px;
+    border-top: 2px solid black;
+    border-radius: 10px;
+    overflow-y: auto;
+    overflow-x: auto;
+    padding: 0px 10px 0px 5px;
+    display: flex;
+}
+
+.codeBox {
+    border-right: 2px solid;
+    border-radius: 10px;
+    width: 55px;
+    height: 570px;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 10px;
+    margin-right: 10px;
+}
+
+.codeBox a {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 5px;
+    /* background-color: beige; */
+}
+
+.textBox {
+    width: 250px;
+    height: 370px;
+}
+
+.textBox span {
+    font-size: 12.5px;
+}
+
+.textBox h1 {
+    padding-top: 10px;
+}
